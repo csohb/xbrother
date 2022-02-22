@@ -43,7 +43,7 @@ func main() {
 		MaxAge:           0,
 	}))
 
-	grp := e.Group(".api/v1")
+	grp := e.Group("/api/v1")
 	request := resty.New()
 	context.InitContext(e, logrus.StandardLogger(), db, request, cfg)
 

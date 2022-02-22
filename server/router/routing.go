@@ -7,4 +7,6 @@ import (
 
 func RoutingDKMK(grp *echo.Group) {
 	grp.GET("/board/list", board.ProcessBoardList)
+	grp.POST("/board/insert", board.ProcessBoardCreate)
+	grp.DELETE("/board/delete", board.ProcessBoardDelete)
 }

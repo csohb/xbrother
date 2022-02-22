@@ -24,3 +24,29 @@ func GetBoardList(db *gorm.DB, page, count int) (ret []BoardVo, err error) {
 		return ret, nil
 	}
 }
+
+func CreateBoardMsg(db *gorm.DB, nickname, pwd, msg string) error {
+	if err := db.Model(&BoardVo{}).Create(&BoardVo{
+		Nickname: nickname,
+		Pwd:      pwd,
+		Msg:      msg,
+	}).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func GetMsgPwd(db *gorm.DB, seq uint) (pwd string, err error) {
+	if err = db.Model(&BoardVo{}).Select("pwd").Where("id=?", seq).Take(&pwd).Error; err != nil {
+		return "", err
+	} else {
+		return pwd, nil
+	}
+}
+
+func DeleteBoardMsg(db *gorm.DB, seq uint) error {
+	if err := db.Delete(&BoardVo{}, seq).Error; err != nil {
+		return err
+	}
+	return nil
+}

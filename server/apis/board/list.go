@@ -9,8 +9,8 @@ import (
 )
 
 type BListRequest struct {
-	Page  int `json:"page"`
-	Count int `json:"count"`
+	Page  int `query:"page"`
+	Count int `query:"count"`
 }
 
 type BData struct {
@@ -33,10 +33,11 @@ type ServiceBoardList struct {
 func (app *ServiceBoardList) Service() *api_context.CommonResponse {
 	resp := BListResponse{}
 
-	if list, err := xdb.GetBoardList(app.DB, app.req.Page, app.req.Count); err != nil {
+	if list, err := xdb.GetBoardList(app.DB, app.req.Page-1, app.req.Count); err != nil {
 		logrus.WithError(err).Error("select list failed : ", err)
 		return api_context.InternalServerErrJSON("db 조회 실패")
 	} else {
+		resp.List = make([]BData, len(list))
 		for i, v := range list {
 			resp.List[i] = BData{
 				Seq:         v.ID,

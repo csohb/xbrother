@@ -50,3 +50,10 @@ func DeleteBoardMsg(db *gorm.DB, seq uint) error {
 	}
 	return nil
 }
+
+func UpdateBoardMsg(db *gorm.DB, seq uint, msg string) error {
+	if err := db.Model(&BoardVo{}).Where("id = ?", seq).Update("msg", msg).Error; err != nil {
+		return err
+	}
+	return nil
+}

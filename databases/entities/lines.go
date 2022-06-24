@@ -8,7 +8,7 @@ type TBLines struct {
 	gorm.Model
 	Line       string `gorm:"type:varchar(4000)"`
 	MemberCode uint
-	Member     TBMember `gorm:"foreignKey:member_code"`
+	VoteCount  int
 }
 
 func (t TBLines) TableName() string {

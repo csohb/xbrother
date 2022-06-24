@@ -46,7 +46,7 @@ func Connect(dsn string, maxIdle, maxConn int) (engine *gorm.DB, err error) {
 }
 
 func ConnectMysql() error {
-	dsn := "dkmk:DKMK12!@tcp(127.0.0.1:3306)/dkmk?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:Jenoayo12!@tcp(127.0.0.1:3306)/dkmk?charset=utf8mb4&parseTime=True&loc=Local"
 	if _, err := Connect(dsn, 10, 10); err != nil {
 		return err
 	} else {

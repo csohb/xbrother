@@ -13,10 +13,10 @@ func main() {
 		os.Exit(-1)
 	}
 
-	if err := mysql.Engine.AutoMigrate(&entities.TBBoard{}); err != nil {
-		panic(err)
-	}
-
+	/*	if err := mysql.Engine.AutoMigrate(&entities.TBBoard{}); err != nil {
+			panic(err)
+		}
+	*/
 	if err := mysql.Engine.AutoMigrate(&entities.TBMember{}); err != nil {
 		panic(err)
 	}

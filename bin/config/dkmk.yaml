@@ -3,7 +3,7 @@ log:
   level: "debug"
   name: "xbrother"
 db:
-  dsn: "dkmk:DKMK12!@tcp(127.0.0.1:3306)/dkmk?charset=utf8mb4&parseTime=True&loc=Local"
+  dsn: "root:Jenoayo12!@tcp(127.0.0.1:3306)/dkmk?charset=utf8mb4&parseTime=True&loc=Local"
   max_idle: 10
   max_conn: 20
 web:

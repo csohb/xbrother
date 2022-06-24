@@ -4,6 +4,7 @@ import (
 	"github.com/labstack/echo"
 	"xbrother/server/apis/board"
 	"xbrother/server/apis/lines"
+	"xbrother/server/apis/vote"
 )
 
 func RoutingDKMK(grp *echo.Group) {
@@ -14,4 +15,7 @@ func RoutingDKMK(grp *echo.Group) {
 
 	//random 명대사
 	grp.GET("/lines/random", lines.ProcessRandomLine)
+
+	// vote
+	grp.PUT("/vote/update", vote.ProcessUpdateVote)
 }

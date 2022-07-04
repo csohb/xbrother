@@ -21,7 +21,7 @@ func main() {
 		panic(err)
 	}
 
-	if err := mysql.Engine.AutoMigrate(&entities.TBLines{}); err != nil {
+	if err := mysql.Engine.AutoMigrate(&entities.TBLines{}, &entities.TBBoard{}); err != nil {
 		panic(err)
 	}
 }

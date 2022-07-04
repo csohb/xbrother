@@ -9,7 +9,7 @@ import (
 )
 
 type UpdateVoteRequest struct {
-	ID uint `query:"id"`
+	ID int `json:"id"`
 }
 
 type ServiceUpdateVote struct {
@@ -18,7 +18,7 @@ type ServiceUpdateVote struct {
 }
 
 func (app *ServiceUpdateVote) Service() *api_context.CommonResponse {
-	if err := xdb.UpdateVote(app.DB, app.req.ID); err != nil {
+	if err := xdb.UpdateVote(app.DB, uint(app.req.ID)); err != nil {
 		logrus.WithError(err).Error("update vote count failed.")
 		return api_context.InternalServerErrJSON("투표에 실패하였습니다.")
 	}

@@ -17,5 +17,6 @@ func RoutingDKMK(grp *echo.Group) {
 	grp.GET("/lines/random", lines.ProcessRandomLine)
 
 	// vote
+	grp.GET("/vote/list", vote.ProcessLinesListDesc)
 	grp.PUT("/vote/update", vote.ProcessUpdateVote)
 }
